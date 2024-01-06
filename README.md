@@ -1,3 +1,3 @@
 # debian-install
-install script for debian
-run sudo ./install.sh
+* install script for debian
+* run sudo ./install.sh
