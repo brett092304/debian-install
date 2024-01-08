@@ -1,8 +1,11 @@
 #! /bin/bash
 
-apt update -y
+user=$(id -u -n )
+
+apt update
 apt upgrade -y
-apt install git build-essential libgtk2.0-dev libgtk-3-dev flatpak gnome-software gnome-software-plugin-flatpak git qemu google-chrome-stable software-properties-common apt-transport-https gpg wget darktable -y
+
+apt install git build-essential libgtk2.0-dev libgtk-3-dev flatpak gnome-software gnome-software-plugin-flatpak git qemu google-chrome-stable software-properties-common apt-transport-https gpg wget darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -17,11 +20,15 @@ sh -c 'ehco "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.
 apt update
 apt install code
 
-mkdir ~/Dev
-mkdir ~/Dev/C++
-mkdir ~/Dev/Java
-mkdir ~/Dev/Python
-mkdir ~/Dev/Assembly
-mkdir ~/Dev/Scripts
-mkdir ~/src-builds
-mkdir ~/libs
+mkdir -p /home/$user/Dev/C++
+mkdir -p /home/$user/Dev/Java
+mkdir -p /home/$user/Dev/Python
+mkdir -p /home/$user/Dev/Assembly
+mkdir -p /home/$user/Dev/Scripts
+mkdir -p /home/$user/src-builds
+mkdir -p /home/$user/libs
+mkdir -p /home/$user/bin
+
+cp ./switchGPU.sh /home/$user/bin/switchGPU
+chmod +x /home/$user/bin/switchGPU
+
