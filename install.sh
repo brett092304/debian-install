@@ -10,7 +10,7 @@ user=$(id -u -n )
 apt update
 apt upgrade -y
 
-apt install git build-essential libgtk2.0-dev libgtk-3-dev flatpak gnome-software gnome-software-plugin-flatpak git qemu google-chrome-stable software-properties-common apt-transport-https gpg wget darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip libmysqlcppconn-dev -y
+apt install git build-essential libgtk2.0-dev libgtk-3-dev flatpak gnome-software gnome-software-plugin-flatpak git qemu google-chrome-stable software-properties-common apt-transport-https gpg wget darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip libmysqlcppconn-dev obs-studio -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
