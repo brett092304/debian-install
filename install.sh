@@ -5,12 +5,14 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-user=$(id -u -n )
+user=$(id -u -n 1000)
 
 apt update
 apt upgrade -y
 
-apt install git build-essential libgtk2.0-dev libgtk-3-dev flatpak gnome-software gnome-software-plugin-flatpak git qemu google-chrome-stable software-properties-common apt-transport-https gpg wget darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip libmysqlcppconn-dev obs-studio -y
+apt install nala
+
+nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager google-chrome-stable darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip libmysqlcppconn-dev obs-studio libavcodec-extra vlc -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -25,15 +27,27 @@ sh -c 'ehco "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.
 apt update
 apt install code
 
-mkdir -p /home/$user/Dev/C++
-mkdir -p /home/$user/Dev/Java
-mkdir -p /home/$user/Dev/Python
-mkdir -p /home/$user/Dev/Assembly
-mkdir -p /home/$user/Dev/Scripts
-mkdir -p /home/$user/src-builds
-mkdir -p /home/$user/libs
-mkdir -p /home/$user/bin
+echo "Add Developement Directories? (y/N)"
+read devDirs
 
-cp ./switchGPU.sh /home/$user/bin/switchGPU
-chmod +x /home/$user/bin/switchGPU
+if [ $devDirs ]; then
+	mkdir -p /home/$user/Dev/C++
+	mkdir -p /home/$user/Dev/Java
+	mkdir -p /home/$user/Dev/Python
+	mkdir -p /home/$user/Dev/Assembly
+	mkdir -p /home/$user/Dev/Scripts
+	mkdir -p /home/$user/src-builds
+	mkdir -p /home/$user/libs
+	mkdir -p /home/$user/bin
+fi
+
+echo "Add GPU Switch for hybrid modes? (y/N)"
+read isGPU
+
+if [ $isGPU ]; then
+	cp ./switchGPU.sh /home/$user/bin/switchGPU
+	chmod +x /home/$user/bin/switchGPU
+fi
+
+exit
 
