@@ -12,18 +12,17 @@ apt upgrade -y
 
 apt install nala
 
-nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager google-chrome-stable darktable kdenlive proxychains4 tor htop vim neofetch dolphin unzip libmysqlcppconn-dev obs-studio libavcodec-extra vlc -y
+nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager darktable kdenlive proxychains4 tor htop vim neofetch unzip libmysqlcppconn-dev obs-studio libavcodec-extra -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpak install flathub com.brave.Browser
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub org.mozilla.firefox
-flatpak install flathub com.valvesoftware.Steam
 
-wget -qO- https://packages.minecrosoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg
-sh -c 'ehco "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
 apt update
 apt install code
 
