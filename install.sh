@@ -12,13 +12,18 @@ apt upgrade -y
 
 apt install nala
 
-nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager darktable kdenlive proxychains4 tor htop vim neofetch unzip libmysqlcppconn-dev obs-studio libavcodec-extra -y
+nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager darktable kdenlive proxychains4 tor htop vim neofetch unzip libmysqlcppconn-dev obs-studio libavcodec-extra apt-transport-https -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 flatpak install flathub com.brave.Browser
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub org.mozilla.firefox
+
+curl -fSsL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg >> /dev/null
+echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main | sudo tee /etc/apt/sources.list.d/google-chrome.list
+apt update
+apt install google-chrome-stable
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg
