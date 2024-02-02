@@ -26,16 +26,16 @@ flatpak install flathub org.mozilla.firefox
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > linux_signing_key.pub
 sudo install -D -o root -g root -m 644 linux_signing_key.pub /etc/apt/keyrings/linux_signing_key.pub
 sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
-apt update
-apt install google-chrome-stable
+nala update
+nala install google-chrome-stable
 
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
 sudo install -D -o root -g root -m 644 packages.microsoft.gpg /usr/share/keyrings/packages.microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-apt update
-apt install code
+nala update
+nala install code
 
-echo "Add Developement Directories? (Y/n)"
+echo "Add Developement Directories? (True/false)"
 read devDirs
 
 if $devDirs; then
@@ -49,13 +49,16 @@ if $devDirs; then
 	mkdir -p /home/$user/bin
 fi
 
-echo "Add GPU Switch for hybrid modes? (Y/n)"
+echo "Add GPU Switch for hybrid modes? (True/false)"
 read isGPU
 
 if $isGPU; then
 	cp ./switchGPU.sh /home/$user/bin/switchGPU
 	chmod +x /home/$user/bin/switchGPU
 fi
+
+rm linux_signing_key.pub
+rm packages.microsoft.gpg
 
 exit
 
