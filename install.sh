@@ -12,7 +12,10 @@ apt upgrade -y
 
 apt install nala
 
-nala install build-essential libgtk2.0-dev libgtk-3-dev flatpak qemu virt-manager darktable kdenlive proxychains4 tor htop vim neofetch unzip libmysqlcppconn-dev obs-studio libavcodec-extra apt-transport-https -y
+# install essentials
+nala install htop vim neofetch unzip libavcodec-extra apt-transport-https curl wget gpg flatpak software-properties-common
+# install development
+nala install build-essential libgtk2.0-dev libgtk-3-dev qemu-system virt-manager darktable kdenlive proxychains4 libmysqlcppconn-dev obs-studio -y
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
@@ -20,8 +23,9 @@ flatpak install flathub com.brave.Browser
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub org.mozilla.firefox
 
-curl -fSsL https://dl.google.com/linux/linux_signing_key.pub | sudo gpg --dearmor | sudo tee /usr/share/keyrings/google-chrome.gpg >> /dev/null
-echo deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main | sudo tee /etc/apt/sources.list.d/google-chrome.list
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > linux_signing_key.pub
+sudo install -D -o root -g root -m 644 linux_signing_key.pub /etc/apt/keyrings/linux_signing_key.pub
+sudo sh -c 'echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/linux_signing_key.pub] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
 apt update
 apt install google-chrome-stable
 
@@ -31,10 +35,10 @@ sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/usr/share/keyrings/pack
 apt update
 apt install code
 
-echo "Add Developement Directories? (y/N)"
+echo "Add Developement Directories? (Y/n)"
 read devDirs
 
-if [ $devDirs ]; then
+if $devDirs; then
 	mkdir -p /home/$user/Dev/C++
 	mkdir -p /home/$user/Dev/Java
 	mkdir -p /home/$user/Dev/Python
@@ -45,10 +49,10 @@ if [ $devDirs ]; then
 	mkdir -p /home/$user/bin
 fi
 
-echo "Add GPU Switch for hybrid modes? (y/N)"
+echo "Add GPU Switch for hybrid modes? (Y/n)"
 read isGPU
 
-if [ $isGPU ]; then
+if $isGPU; then
 	cp ./switchGPU.sh /home/$user/bin/switchGPU
 	chmod +x /home/$user/bin/switchGPU
 fi
