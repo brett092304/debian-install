@@ -13,7 +13,7 @@ apt upgrade -y
 apt install nala
 
 # install essentials
-nala install htop vim neofetch unzip libavcodec-extra curl wget gpg flatpak
+nala install htop vim neofetch unzip libavcodec-extra curl wget gpg flatpak gnome-software-plugin-flatpak
 # install development
 nala install build-essential libgtk2.0-dev libgtk-3-dev qemu-system virt-manager darktable kdenlive proxychains4 libmysqlcppconn-dev obs-studio -y
 
