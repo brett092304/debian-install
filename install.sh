@@ -11,7 +11,7 @@ apt update
 apt upgrade -y
 
 # install essentials
-apt install htop vim neofetch unzip libavcodec-extra curl wget gpg flatpak gnome-software-plugin-flatpak
+apt install htop vim neofetch unzip curl wget gpg flatpak gnome-software-plugin-flatpak
 
 # install development
 apt install build-essential libgtk2.0-dev libgtk-3-dev qemu-system virt-manager proxychains4 libmysqlcppconn-dev
