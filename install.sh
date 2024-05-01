@@ -24,6 +24,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 flatpak install flathub com.brave.Browser
 flatpak install flathub com.discordapp.Discord
 flatpak install flathub org.mozilla.firefox
+flatpak install flathub com.spotify.Client
 
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub > linux_signing_key.pub
 install -D -o root -g root -m 644 linux_signing_key.pub /etc/apt/keyrings/linux_signing_key.pub
@@ -46,6 +47,7 @@ if $devDirs; then
 	mkdir -p /home/$user/Dev/Python
 	mkdir -p /home/$user/Dev/Assembly
 	mkdir -p /home/$user/Dev/Scripts
+	mkdir -p /home/$user/Dev/School
 	mkdir -p /home/$user/src-builds
 	mkdir -p /home/$user/libs
 	mkdir -p /home/$user/bin
