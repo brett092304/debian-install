@@ -14,7 +14,7 @@ apt upgrade -y
 apt install htop vim neofetch unzip curl wget gpg flatpak gnome-software-plugin-flatpak tmux
 
 # install development
-apt install build-essential libgtk2.0-dev libgtk-3-dev qemu-system virt-manager proxychains4 libmysqlcppconn-dev
+apt install build-essential libgtk2.0-dev libgtk-3-dev proxychains4 libmysqlcppconn-dev qemu-kvm qemu-system qemu-utils python3 python3-pip libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemone virt-manager
 
 # install extra
 apt install darktable kdenlive proxychains4 obs-studio
@@ -63,6 +63,21 @@ fi
 
 rm linux_signing_key.pub
 rm packages.microsoft.gpg
+
+# Setup qemu
+echo "Please verify that libvirtd is running, hit enter to continue if libvirtd is running"
+read isLibvirt
+
+if $isLibvert; then
+	virsh net-start default
+	virsh net-autostart default
+
+	sudo usermod -aG libvirt $USER
+	usermod -aG libvirt-qemu $USER
+	usermod -aG kvm $USER
+	usermod -aG input $USER
+	usermod -aG disk $USER
+fi
 
 exit
 
