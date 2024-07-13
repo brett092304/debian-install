@@ -11,7 +11,7 @@ apt update
 apt upgrade -y
 
 # install essentials
-apt install htop vim neofetch unzip curl wget gpg flatpak gnome-software-plugin-flatpak
+apt install htop vim neofetch unzip curl wget gpg flatpak gnome-software-plugin-flatpak tmux
 
 # install development
 apt install build-essential libgtk2.0-dev libgtk-3-dev qemu-system virt-manager proxychains4 libmysqlcppconn-dev
@@ -41,14 +41,15 @@ echo "Add Developement Directories? (True/false)"
 read devDirs
 
 if $devDirs; then
-	mkdir -p /home/$user/Dev/C++
-	mkdir -p /home/$user/Dev/Java
-	mkdir -p /home/$user/Dev/Python
-	mkdir -p /home/$user/Dev/Assembly
-	mkdir -p /home/$user/Dev/Scripts
-	mkdir -p /home/$user/src-builds
-	mkdir -p /home/$user/libs
-	mkdir -p /home/$user/bin
+	mkdir -p /home/$USER/Dev/C++
+	mkdir -p /home/$USER/Dev/Java
+	mkdir -p /home/$USER/Dev/Python
+	mkdir -p /home/$USER/Dev/Assembly
+	mkdir -p /home/$USER/Dev/Scripts
+	mkdir -p /home/$USER/Dev/SchoolProjects
+	mkdir -p /home/$USER/src-builds
+	mkdir -p /home/$USER/libs
+	mkdir -p /home/$USER/bin
 fi
 
 echo "Add GPU Switch for hybrid modes? (True/false)"
