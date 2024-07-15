@@ -5,7 +5,10 @@ if [[ $EUID -ne 0 ]]; then
   exit 1
 fi
 
-user=$(id -u -n 1000)
+echo "which user is being set up? (uid) "
+read userID
+
+user=$(id -u -n $userID)
 
 apt update
 apt upgrade -y
