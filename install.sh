@@ -72,7 +72,7 @@ if $isLibvert; then
 	virsh net-start default
 	virsh net-autostart default
 
-	sudo usermod -aG libvirt $USER
+	usermod -aG libvirt $USER
 	usermod -aG libvirt-qemu $USER
 	usermod -aG kvm $USER
 	usermod -aG input $USER
