@@ -51,7 +51,7 @@ if $devDirs; then
 	mkdir -p /home/$USER/Dev/Assembly
 	mkdir -p /home/$USER/Dev/Scripts
 	mkdir -p /home/$USER/Dev/SchoolProjects
-	mkdir -p /home/$USER/src-builds
+	mkdir -p /home/$USER/Dev/src-builds
 	mkdir -p /home/$USER/libs
 	mkdir -p /home/$USER/bin
 fi
