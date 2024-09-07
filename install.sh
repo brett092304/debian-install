@@ -49,15 +49,15 @@ echo "Add Developement Directories? (True/false)"
 read devDirs
 
 if $devDirs; then
-	mkdir -p /home/$USER/Dev/C++
-	mkdir -p /home/$USER/Dev/Java
-	mkdir -p /home/$USER/Dev/Python
-	mkdir -p /home/$USER/Dev/Assembly
-	mkdir -p /home/$USER/Dev/Scripts
-	mkdir -p /home/$USER/Dev/SchoolProjects
-	mkdir -p /home/$USER/Dev/src-builds
-	mkdir -p /home/$USER/libs
-	mkdir -p /home/$USER/bin
+	mkdir -p /home/$user/Dev/C++
+	mkdir -p /home/$user/Dev/Java
+	mkdir -p /home/$user/Dev/Python
+	mkdir -p /home/$user/Dev/Assembly
+	mkdir -p /home/$user/Dev/Scripts
+	mkdir -p /home/$user/Dev/SchoolProjects
+	mkdir -p /home/$user/Dev/src-builds
+	mkdir -p /home/$user/libs
+	mkdir -p /home/$user/bin
 fi
 
 echo "Add GPU Switch for hybrid modes? (True/false)"
@@ -79,10 +79,10 @@ if $isLibvert; then
 	virsh net-start default
 	virsh net-autostart default
 
-	usermod -aG libvirt $USER
-	usermod -aG libvirt-qemu $USER
-	usermod -aG kvm $USER
-	usermod -aG input $USER
+	usermod -aG libvirt $user
+	usermod -aG libvirt-qemu $user
+	usermod -aG kvm $user
+	usermod -aG input $user
 	usermod -aG disk $USER
 fi
 
