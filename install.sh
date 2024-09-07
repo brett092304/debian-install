@@ -83,7 +83,7 @@ if $isLibvert; then
 	usermod -aG libvirt-qemu $user
 	usermod -aG kvm $user
 	usermod -aG input $user
-	usermod -aG disk $USER
+	usermod -aG disk $user
 fi
 
 exit
