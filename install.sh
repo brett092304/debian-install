@@ -14,7 +14,7 @@ apt update
 apt upgrade -y
 
 # install essentials
-apt install htop vim neofetch unzip curl wget gpg flatpak tmux kitty vlc
+apt install htop vim neofetch unzip curl wget gpg flatpak tmux kitty vlc tldr
 
 # install development
 apt install build-essential libgtk2.0-dev libgtk-3-dev libmysqlcppconn-dev qemu-kvm qemu-system qemu-utils python3 python3-pip libvirt-clients libvirt-daemon-system bridge-utils virtinst libvirt-daemone virt-manager libstdc++-12-dev
